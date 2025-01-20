@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Auth\Events\PasswordReset;
@@ -86,11 +87,19 @@ class AuthController extends Controller
     }
     public function verificationNotice()
     {
+        if (Gate::denies('view-emailVerification')) {
+            return redirect()->route('home')->with('message', 'Your email is already verified.');
+        }
         return view('auth.email-verify');
     }
     public function verification(EmailVerificationRequest $request)
     {
         $request->fulfill();
         return redirect()->route('home');
+    }
+    public function resendEmailVerification(Request $request)
+    {
+        $request->user()->sendEmailVerificationNotification();
+        return back()->with('message', 'Verification link sent!');
     }
 }

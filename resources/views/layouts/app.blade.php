@@ -11,9 +11,15 @@
     <title>@yield('title') </title>
 </head>
 
-<body>
-    <x-header></x-header>
+<body class="@yield('bg-color')">
+    @if (Route::currentRouteName() === 'home')
+        <x-header></x-header>
+    @else
+        <x-header-no-bg></x-header-no-bg>
+    @endif
+
     @yield('content')
+
     <x-footer></x-footer>
 </body>
 
