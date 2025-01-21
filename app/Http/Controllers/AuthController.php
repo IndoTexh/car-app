@@ -36,7 +36,7 @@ class AuthController extends Controller
         auth()->logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return redirect()->route('login');
+        return redirect()->route('home');
     }
     public function requestPasswordLink()
     {

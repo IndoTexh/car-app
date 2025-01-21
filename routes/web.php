@@ -1,6 +1,6 @@
 <?php
 
-
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\RegisterController;
@@ -46,5 +46,8 @@ Route::middleware('auth')->group(function () {
     ->middleware(['throttle:6,1'])
     ->name('verification.send');
 
+  Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
+  Route::post('/admin-createMaker', [AdminController::class, 'createMaker'])->name('admin.maker');
+  Route::post('/admin-createModel', [AdminController::class, 'createModel'])->name('admin.model');
   Route::get('/dashboard', [UserController::class, 'dashboard'])->name('dashboard');
 });
