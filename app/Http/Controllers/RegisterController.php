@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\WelcomeMail;
 use App\Models\User;
-use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Auth\Events\Registered;
 
 class RegisterController extends Controller
 {
@@ -21,8 +23,11 @@ class RegisterController extends Controller
             'password' => ['required', 'confirmed', 'min:5'],
             'phone' => ['required']
         ]);
+        $message = 'Thank you for signing up';
+        $subject = 'Please verify your email address by clicking on this button.';
         $user = User::create($credentials);
         event(new Registered($user));
+        $user->sendEmailVerificationNotification();
         auth()->login($user);
         return redirect()->route('verification.notice');
     }

@@ -7,8 +7,9 @@
 @section('content')
 <div class="bg-white shadow-lg max-w-sm mx-auto rounded-md text-orange-700 font-bold p-5 mt-10">
   <p class="text-sm">
-    We have emailed a link for email verification. Click the link it will redirect you to your respective dashboard.
-    If you have not received an email verification we gladly send you another one by clicking the button below.
+    Thank you for signing up! Before getting started,
+    could you please verify you email address by clicking on the link
+    we just emailed you? If you didn't receive the email we gladly send you another.
   </p>
 
 
@@ -19,8 +20,9 @@
 
   <form action="{{ route('verification.send') }}" method="POST">
     @csrf
-    <button class="bg-orange-700 text-sm text-white px-2 py-2 rounded-md mt-2">Resend verification
-      link</button>
+    <button class="bg-orange-700 text-sm text-white px-2 py-2 rounded-md mt-2">
+      Resend verification email
+    </button>
   </form>
 </div>
 @endsection

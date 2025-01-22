@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Fuel;
 use App\Models\Maker;
 use App\Models\Models;
+use App\Models\Type;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -33,5 +35,21 @@ class AdminController extends Controller
             'name' => $models['model']
         ]);
         return back()->with('model-message', 'A new model has been created!');
+    }
+    public function createType(Request $request)
+    {
+        $type = $request->validate([
+            'type' => 'required|string|max:255'
+        ]);
+        Type::create($type);
+        return back()->with('type-message', 'A new car type has been created!');
+    }
+    public function createFuel(Request $request)
+    {
+        $fuel = $request->validate([
+            'fuel' => 'required|string|max:255'
+        ]);
+        Fuel::create($fuel);
+        return back()->with('fuel-message', 'A new type fuel has been created!');
     }
 }

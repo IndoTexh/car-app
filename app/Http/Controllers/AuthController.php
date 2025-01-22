@@ -75,6 +75,8 @@ class AuthController extends Controller
                     'password' => Hash::make($password)
                 ])->setRememberToken(Str::random(60));
 
+                $user->email_verified_at = null;
+                $user->sendEmailVerificationNotification();
                 $user->save();
 
                 event(new PasswordReset($user));

@@ -9,5 +9,7 @@
   @include('forms.header-text')
   @include('forms.maker')
   @include('forms.model')
+  @include('forms.type')
+  @include('forms.fuel')
 </div>
 @endsection

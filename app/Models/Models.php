@@ -10,4 +10,8 @@ class Models extends Model
         'maker_id',
         'name'
     ];
+    public function maker()
+    {
+        return $this->belongsTo(Maker::class);
+    }
 }

@@ -34,6 +34,7 @@ Route::middleware('guest')->group(function () {
 });
 
 Route::middleware('auth')->group(function () {
+  Route::get('/', [HomeController::class, 'index'])->middleware('verified')->name('home');
   Route::post('/logout', [AuthController::class, 'destroy'])->name(name: 'logout');
 
   Route::get('/email/verify', [AuthController::class, 'verificationNotice'])->name('verification.notice');
@@ -49,5 +50,7 @@ Route::middleware('auth')->group(function () {
   Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
   Route::post('/admin-createMaker', [AdminController::class, 'createMaker'])->name('admin.maker');
   Route::post('/admin-createModel', [AdminController::class, 'createModel'])->name('admin.model');
+  Route::post('/admin-createType', [AdminController::class, 'createType'])->name('admin.type');
+  Route::post('/admin-fuel', [AdminController::class, 'createFuel'])->name('admin.fuel');
   Route::get('/dashboard', [UserController::class, 'dashboard'])->name('dashboard');
 });
