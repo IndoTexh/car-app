@@ -2,7 +2,7 @@
   class="max-md:hidden {{ request()->routeIs('home') ? 'px-4 border-2  py-1 rounded-md' : '' }}">
   Home
 </a>
-<a href=""
+<a href="{{ route('sellcar') }}"
   class="max-md:hidden {{ request()->routeIs('') ? 'px-4 border-2  py-1 rounded-md' : '' }}">
   Sell your car
 </a>

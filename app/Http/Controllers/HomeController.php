@@ -16,7 +16,7 @@ class HomeController extends Controller
             'makers' => Maker::all(),
             'models' => Models::all(),
             'types' => Type::all(),
-            'fuels' => Fuel::all() 
+            'fuels' => Fuel::all()
         ]);
     }
 }

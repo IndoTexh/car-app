@@ -6,7 +6,7 @@
 
 @section('content')
 <div class="py-5">
-  @include('forms.header-text')
+  <x-header-text>Create cars information</x-header-text>
   @include('forms.maker')
   @include('forms.model')
   @include('forms.type')

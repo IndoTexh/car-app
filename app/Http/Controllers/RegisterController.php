@@ -29,6 +29,6 @@ class RegisterController extends Controller
         event(new Registered($user));
         $user->sendEmailVerificationNotification();
         auth()->login($user);
-        return redirect()->route('verification.notice');
+        return redirect()->route('profile');
     }
 }

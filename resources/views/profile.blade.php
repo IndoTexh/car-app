@@ -5,7 +5,9 @@
 @section('title', 'Dashboard')
 
 @section('content')
-<div class="px-20">
-  <h1>Dashboard</h1>
+<div class="py-5">
+  <x-header-text>My Profile</x-header-text>
+  @include('forms.user-info')
+  @include('forms.password')
 </div>
 @endsection

@@ -1,6 +1,6 @@
 <li class="group relative cursor-pointer">
   <div class="flex items-center px-2 border-2 py-1 border-white rounded-md">
-    <a class="menu-hover text-white">
+    <a class="menu-hover text-white mx-2">
       {{ auth()->user()->first_name . " " . auth()->user()->last_name }}
     </a>
     <span>
@@ -19,25 +19,26 @@
       class="hidden max-md:block border-b border-gray-100 py-1  text-gray-500 hover:text-black md:mx-2 ">
       Home
     </a>
-    <a href="{{ route('dashboard') }}" class="border-b border-gray-100 py-1  text-gray-500 hover:text-black md:mx-2 ">
+    <a href="{{ route('profile') }}" class="border-b border-gray-100 py-1  text-gray-500 hover:text-black md:mx-2 ">
       Profile
     </a>
     <a href="{{ route('admin.index') }}" class="border-b border-gray-100 py-1  text-gray-500 hover:text-black md:mx-2 ">
       Admin
     </a>
-    <a href="{{ route('admin.index') }}" class="border-b border-gray-100 py-1  text-gray-500 hover:text-black md:mx-2 ">
+    <a href="{{ route('admin.listMaker') }}"
+      class="border-b border-gray-100 py-1  text-gray-500 hover:text-black md:mx-2 ">
       Maker
     </a>
-    <a href="{{ route('admin.index') }}" class="border-b border-gray-100 py-1  text-gray-500 hover:text-black md:mx-2 ">
+    <a href="{{ route('admin.modelList') }}"
+      class="border-b border-gray-100 py-1  text-gray-500 hover:text-black md:mx-2 ">
       Model
     </a>
-    <a href="{{ route('admin.index') }}" class="border-b border-gray-100 py-1  text-gray-500 hover:text-black md:mx-2 ">
-      State/Region
-    </a>
-    <a href="{{ route('admin.index') }}" class="border-b border-gray-100 py-1  text-gray-500 hover:text-black md:mx-2 ">
+    <a href="{{ route('admin.listType') }}"
+      class="border-b border-gray-100 py-1  text-gray-500 hover:text-black md:mx-2 ">
       Type
     </a>
-    <a href="{{ route('admin.index') }}" class="border-b border-gray-100 py-1  text-gray-500 hover:text-black md:mx-2 ">
+    <a href="{{ route('admin.listFuel') }}"
+      class="border-b border-gray-100 py-1  text-gray-500 hover:text-black md:mx-2 ">
       Fuel Type
     </a>
     <form action="{{ route('logout') }}" method="POST"
@@ -46,14 +47,15 @@
       <button>Logout</button>
     </form>
   @else
-  <a href="{{ route('dashboard') }}" class="border-b border-gray-100 py-1  text-gray-500 hover:text-black md:mx-2 ">
+  <a href="{{ route('profile') }}" class="border-b border-gray-100 py-1  text-gray-500 hover:text-black md:mx-2 ">
     Profile
   </a>
   <a href="{{ route('home') }}"
     class="hidden max-md:block border-b border-gray-100 py-1  text-gray-500 hover:text-black md:mx-2 ">
     Home
   </a>
-  <a href="" class="block border-b border-gray-100 py-1  text-gray-500 hover:text-black md:mx-2">
+  <a href="{{ route('sellcar') }}"
+    class="block border-b border-gray-100 py-1  text-gray-500 hover:text-black md:mx-2">
     Add cars
   </a>
 

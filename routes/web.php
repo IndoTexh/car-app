@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\SellcarController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -34,7 +35,6 @@ Route::middleware('guest')->group(function () {
 });
 
 Route::middleware('auth')->group(function () {
-  Route::get('/', [HomeController::class, 'index'])->middleware('verified')->name('home');
   Route::post('/logout', [AuthController::class, 'destroy'])->name(name: 'logout');
 
   Route::get('/email/verify', [AuthController::class, 'verificationNotice'])->name('verification.notice');
@@ -47,10 +47,17 @@ Route::middleware('auth')->group(function () {
     ->middleware(['throttle:6,1'])
     ->name('verification.send');
 
-  Route::get('/admin', [AdminController::class, 'index'])->name('admin.index');
-  Route::post('/admin-createMaker', [AdminController::class, 'createMaker'])->name('admin.maker');
-  Route::post('/admin-createModel', [AdminController::class, 'createModel'])->name('admin.model');
-  Route::post('/admin-createType', [AdminController::class, 'createType'])->name('admin.type');
-  Route::post('/admin-fuel', [AdminController::class, 'createFuel'])->name('admin.fuel');
-  Route::get('/dashboard', [UserController::class, 'dashboard'])->name('dashboard');
+  Route::get('/profile', [UserController::class, 'profile'])
+    ->middleware('verified')
+    ->name('profile');
+
+  Route::post('/profile', [UserController::class, 'updateInfo'])->name('updateInfo');
+
+  Route::put('/profile', [UserController::class, 'updatePassword'])->name('updatePassword');
+
+  Route::get('/sellcar', [SellcarController::class, 'index'])
+    ->middleware('verified')
+    ->name('sellcar');
+
 });
+require __DIR__ . '/admin.php';
